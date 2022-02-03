@@ -3,6 +3,10 @@ import { recognition, setResultsCB } from './modules/speech';
 import { speak } from './modules/vocalsynthesis';
 import './style.css';
 
+// Import des textes
+import { harpagonFrosine } from './textes/harpagonFrosine';
+
+let theTexte = '';
 const theTextElmt = document.querySelector('#theText') as HTMLDivElement;
 // Ouverture du fichier de texte
 const textSelect = document.querySelector(
@@ -13,7 +17,7 @@ textSelect.onchange = () => {
   let filename = '';
   switch (textSelect.selectedIndex) {
     case 1:
-      filename = './textes/harpagonEtFrosine.txt';
+      theTexte = harpagonFrosine';
       theTextElmt.innerHTML = '<p>Texte choisi: Harpagon et Frosine.</p>';
       break;
     default:
