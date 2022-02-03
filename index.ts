@@ -10,8 +10,10 @@ const textSelect = document.querySelector(
 ) as HTMLSelectElement;
 
 textSelect.onchange = () => {
+  let filename = '';
   switch (textSelect.selectedIndex) {
     case 1:
+      filename = './textes/harpagonEtFrosine.txt';
       theTextElmt.innerHTML = '<p>Texte choisi: Harpagon et Frosine.</p>';
       break;
     default:
@@ -19,6 +21,11 @@ textSelect.onchange = () => {
         "<p class='.errormsg'>Veuillez choisir l'un des textes proposés.</p>";
       break;
   }
+  /*
+  let fileReader = new FileReader();
+  fileReader.readAsText(filename);
+  theTextElmt.innerHTML = fileReader.result.toString();
+  */
 };
 
 // Speech
