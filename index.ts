@@ -8,6 +8,9 @@ import { harpagonFrosine } from './textes/harpagonEtFrosine';
 
 let theTexte = '';
 const theTextElmt = document.querySelector('#theText') as HTMLDivElement;
+let personages: string[];
+let personagesVoces: any[];
+
 // Ouverture du fichier de texte
 const textSelect = document.querySelector(
   '#textSelection'
@@ -39,6 +42,7 @@ bt.onclick = () => {
   reco = !reco;
   bt.textContent = reco ? 'Stopper' : 'Parler';
 };
+
 function speechCB(str: string) {
   console.log(str);
 }
