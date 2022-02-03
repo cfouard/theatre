@@ -18,18 +18,12 @@ textSelect.onchange = () => {
   switch (textSelect.selectedIndex) {
     case 1:
       theTexte = harpagonFrosine;
-      theTextElmt.innerHTML = '<p>Texte choisi: Harpagon et Frosine.</p>';
       break;
     default:
-      theTextElmt.innerHTML =
-        "<p class='.errormsg'>Veuillez choisir l'un des textes proposés.</p>";
+      theTexte = "Veuillez choisir l'un des textes proposés.";
       break;
   }
-  /*
-  let fileReader = new FileReader();
-  fileReader.readAsText(filename);
-  theTextElmt.innerHTML = fileReader.result.toString();
-  */
+  theTextElmt.innerHTML = theTexte;
 };
 
 // Speech
