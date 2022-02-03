@@ -32,7 +32,7 @@ let reco = false;
 bt.onclick = () => {
   if (reco) {
     recognition.stop();
-    setResultsCB(speechCB, speechCB);
+    setResultsCB(speechCB);
   } else {
     recognition.start();
   }

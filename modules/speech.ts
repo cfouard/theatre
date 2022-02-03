@@ -12,11 +12,11 @@ recognition.maxAlternatives = 1; // Ne montre au plus qu'une alternative
 recognition.continuous = false; // Fonctionne en continue
 
 type CB_RESULT = (txt: string) => unknown;
-let onPartialResult: undefined | CB_RESULT;
+//let onPartialResult: undefined | CB_RESULT;
 let onFinalResult: undefined | CB_RESULT;
 
-export function setResultsCB(p: CB_RESULT, c: CB_RESULT): void {
-  onPartialResult = p;
+export function setResultsCB(c: CB_RESULT): void {
+  //  onPartialResult = p;
   onFinalResult = c;
 }
 
@@ -36,7 +36,7 @@ recognition.onresult = (event) => {
       .slice(startingIndex)
       .map((r) => r.item(0).transcript)
       .join(' ');
-    onPartialResult?.(transcript);
+    //    onPartialResult?.(transcript);
   }
 };
 recognition.onerror = console.error;
