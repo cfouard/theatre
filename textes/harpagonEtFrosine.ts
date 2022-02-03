@@ -1,4 +1,4 @@
-export const harpagonFrosine = '
+export const harpagonFrosine = " 
 =HARPAGON=
 Tu me trouves bien ?
 =FROSINE=
@@ -38,4 +38,5 @@ Ne me refusez pas la grâce dont je vous sollicite. Vous ne sauriez croire, Mons
 =HARPAGON=
 Je m'en vais. Voilà qu'on m'appelle. Jusqu'à tantôt.
 =FROSINE=
-Que la fièvre te serre, chien de vilain à tous les diables. Le ladre a été ferme à toutes mes attaques : mais il ne me faut pas pourtant quitter la négociation ; et j'ai l'autre côté, en tout cas, d'où je suis assurée de tirer bonne récompense.'
+Que la fièvre te serre, chien de vilain à tous les diables. Le ladre a été ferme à toutes mes attaques : mais il ne me faut pas pourtant quitter la négociation ; et j'ai l'autre côté, en tout cas, d'où je suis assurée de tirer bonne récompense.
+";
