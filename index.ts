@@ -4,7 +4,7 @@ import { speak } from './modules/vocalsynthesis';
 import './style.css';
 
 // Import des textes
-import { harpagonFrosine } from './textes/harpagonFrosine';
+import { harpagonFrosine } from './textes/harpagonEtFrosine';
 
 let theTexte = '';
 const theTextElmt = document.querySelector('#theText') as HTMLDivElement;
@@ -17,7 +17,7 @@ textSelect.onchange = () => {
   let filename = '';
   switch (textSelect.selectedIndex) {
     case 1:
-      theTexte = harpagonFrosine';
+      theTexte = harpagonFrosine;
       theTextElmt.innerHTML = '<p>Texte choisi: Harpagon et Frosine.</p>';
       break;
     default:
