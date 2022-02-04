@@ -1,7 +1,12 @@
 // Import stylesheets
 import { extractRepliques, Replique } from './modules/repliques';
 import { recognition, setResultsCB } from './modules/speech';
-import { getAllVoices, speak } from './modules/vocalsynthesis';
+import {
+  fillInVoiceList,
+  getAllVoices,
+  getVoiceList,
+  speak,
+} from './modules/vocalsynthesis';
 import './style.css';
 
 // Import des textes
@@ -25,6 +30,8 @@ let personagesVoces: any[];
 const textSelect = document.querySelector(
   '#textSelection'
 ) as HTMLSelectElement;
+
+const voiceSelect = document.querySelector('#voiceSelect') as HTMLSelectElement;
 
 textSelect.onchange = () => {
   let filename = '';
@@ -69,8 +76,6 @@ lectureBt.onclick = () => {
 // //////
 
 function updatePersoVoix(personnages: string[]) {
-  console.log(getAllVoices());
-  console.log(getAllVoices().length);
   for (let i in personnages) {
     let ligne = persovoix.tBodies[0].insertRow();
 
@@ -78,6 +83,9 @@ function updatePersoVoix(personnages: string[]) {
     let caseVoix = ligne.insertCell();
 
     casePerso.appendChild(document.createTextNode(personnages[i]));
+
+    let select = getVoiceList();
+    caseVoix.appendChild(select);
   }
 }
 
@@ -95,35 +103,4 @@ function updatePersoSelection(personnages: string[]) {
     elmt.textContent = personnages[i];
     persoSelection.options.add(elmt);
   }
-}
-
-function populateVoiceList() {
-  if (typeof speechSynthesis === 'undefined') {
-    return;
-  }
-
-  var voices = speechSynthesis.getVoices();
-
-  for (var i = 0; i < voices.length; i++) {
-    if (voices[i].lang.toString().includes('fr')) {
-      var option = document.createElement('option');
-      option.textContent = voices[i].name + ' (' + voices[i].lang + ')';
-
-      if (voices[i].default) {
-        option.textContent += ' -- DEFAULT';
-      }
-
-      option.setAttribute('data-lang', voices[i].lang);
-      option.setAttribute('data-name', voices[i].name);
-      document.getElementById('voiceSelect').appendChild(option);
-    }
-  }
-}
-
-populateVoiceList();
-if (
-  typeof speechSynthesis !== 'undefined' &&
-  speechSynthesis.onvoiceschanged !== undefined
-) {
-  speechSynthesis.onvoiceschanged = populateVoiceList;
 }
