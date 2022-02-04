@@ -37,6 +37,7 @@ textSelect.onchange = () => {
   }
 
   [personnages, repliques] = extractRepliques(theTexte);
+  updatePersoSelection(personnages, persoSelection);
 
   console.log('personnages: ', personnages);
   console.log('répliques: ' + repliques);
@@ -65,3 +66,20 @@ const lectureBt = document.querySelector('#read') as HTMLButtonElement;
 lectureBt.onclick = () => {
   speak('Tu aimes le thé ?');
 };
+
+// //////
+function updatePersoSelection(personnages: string[]) {
+  let invite = persoSelection.item(0).textContent;
+  console.log('invite: ', invite);
+
+  persoSelection.options.length = 0;
+
+  let elmt = document.createElement('option');
+  elmt.textContent = invite;
+  persoSelection.options.add(elmt);
+  for (let i in personnages) {
+    let elmt = document.createElement('option');
+    elmt.textContent = personnages[i];
+    persoSelection.options.add(elmt);
+  }
+}

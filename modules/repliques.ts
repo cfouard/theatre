@@ -29,14 +29,11 @@ export function extractRepliques(
     firstSeparator = -1;
     nextSeparator = -1;
     firstSeparator = currentText.indexOf(separator);
-    console.log(firstSeparator);
 
     currentText = currentText.substring(firstSeparator + separator.length);
     nextSeparator = currentText.indexOf(separator);
 
     personnage = currentText.substring(0, nextSeparator);
-
-    console.log('Personnage: ', personnage);
 
     currentText = currentText.substring(nextSeparator + separator.length);
 
@@ -49,9 +46,7 @@ export function extractRepliques(
     personnagesSet.add(personnage);
     repliques.push(new Replique(personnage, texte, 'default'));
   } while (nextSeparator != -1);
-  console.log('personnagesSet', personnagesSet);
   personnages = Array.from(personnagesSet);
-  console.log('personnages', personnages);
 
   return [personnages, repliques];
 }
