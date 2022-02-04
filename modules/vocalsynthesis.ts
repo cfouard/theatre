@@ -15,3 +15,7 @@ export function speak(text) {
 
   speechSynthesis.speak(karl);
 }
+
+export function getAllVoices() {
+  return SpeechSynthesis.getVoices();
+}
