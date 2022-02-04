@@ -1,4 +1,5 @@
 // Import stylesheets
+import { extractRepliques, Replique } from './modules/repliques';
 import { recognition, setResultsCB } from './modules/speech';
 import { speak } from './modules/vocalsynthesis';
 import './style.css';
@@ -6,8 +7,16 @@ import './style.css';
 // Import des textes
 import { harpagonFrosine } from './textes/harpagonEtFrosine';
 
+console.clear();
 let theTexte = '';
+let personnages;
+let repliques;
+
 const theTextElmt = document.querySelector('#theText') as HTMLDivElement;
+const persoSelection = document.querySelector(
+  '#personnageSelection'
+) as HTMLSelectElement;
+
 let personages: string[];
 let personagesVoces: any[];
 
@@ -26,6 +35,11 @@ textSelect.onchange = () => {
       theTexte = "Veuillez choisir l'un des textes proposés.";
       break;
   }
+
+  [personnages, repliques] = extractRepliques(theTexte);
+
+  console.log('personnages: ', personnages);
+  console.log('répliques: ' + repliques);
   theTextElmt.innerHTML = theTexte;
 };
 

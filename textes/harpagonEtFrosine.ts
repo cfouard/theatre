@@ -1,42 +1,42 @@
 export const harpagonFrosine = `
-=HARPAGON=
+==HARPAGON==
 Tu me trouves bien ?
-=FROSINE=
+==FROSINE==
 Comment ? vous êtes à ravir, et votre figure est à peindre. Tournez-vous un peu, s'il vous plaît. Il ne se peut pas mieux. Que je vous voie marcher. Voilà un corps taillé, libre, et dégagé comme il faut, et qui ne marque aucune incommodité.
-=HARPAGON=
+==HARPAGON==
 Je n'en ai pas de grandes, Dieu merci. Il n'y a que ma fluxion, qui me prend de temps en temps.
-=FROSINE=
+==FROSINE==
 Cela n'est rien. Votre fluxion ne vous sied point mal, et vous avez grâce à tousser.
-=HARPAGON=
+==HARPAGON==
 Dis-moi un peu. Mariane ne m'a-t-elle point encore vu ? N'a-t-elle point pris garde à moi en passant ?
-=FROSINE=
+==FROSINE==
 Non. Mais nous nous sommes fort entretenues de vous. Je lui ai fait un portrait de votre personne ; et je n'ai pas manqué de lui vanter votre mérite, et l'avantage que ce lui serait, d'avoir un mari comme vous.
-=HARPAGON=
+==HARPAGON==
 Tu as bien fait ; et je t'en remercie.
-=FROSINE=
+==FROSINE==
 J'aurais, Monsieur, une petite prière à vous faire. J'ai un procès que je suis sur le point de perdre, faute d'un peu d'argent ; et vous pourriez facilement me procurer le gain de ce procès, si vous aviez quelque bonté pour moi. Vous ne sauriez croire le plaisir qu'elle aura de vous voir. Ah ! que vous lui plairez ! et que votre fraise à l'antique fera sur son esprit un effet admirable ! Mais, surtout, elle sera charmée de votre haut-de-chausses, attaché au pourpoint avec des aiguillettes. C'est pour la rendre folle de vous ; et un amant aiguilleté sera pour elle un ragoût merveilleux.
-=HARPAGON=
+==HARPAGON==
 Certes, tu me ravis, de me dire cela.
-=FROSINE=
+==FROSINE==
 En vérité, Monsieur, ce procès m'est d'une conséquence tout à fait grande. Je suis ruinée, si je le perds ; et quelque petite assistance me rétablirait mes affaires. Je voudrais que vous eussiez vu le ravissement où elle était, à m'entendre parler de vous. La joie éclatait dans ses yeux, au récit de vos qualités ; et je l'ai mise enfin dans une impatience extrême, de voir ce mariage entièrement conclu.
-=HARPAGON=
+==HARPAGON==
 Tu m'as fait grand plaisir, Frosine ; et je t'en ai, je te l'avoue, toutes les obligations du monde.
-=FROSINE=
+==FROSINE==
 Je vous prie, Monsieur, de me donner le petit secours que je vous demande. Cela me remettra sur pied ; et je vous en serai éternellement obligée.
-=HARPAGON=
+==HARPAGON==
 Adieu. Je vais achever mes dépêches.
-=FROSINE=
+==FROSINE==
 Je vous assure, Monsieur, que vous ne sauriez jamais me soulager dans un plus grand besoin.
-=HARPAGON=
+==HARPAGON==
 Je mettrai ordre que mon carrosse soit tout prêt, pour vous mener à la foire.
-=FROSINE=
+==FROSINE==
 Je ne vous importunerais pas, si je ne m'y voyais forcée par la nécessité.
-=HARPAGON=
+==HARPAGON==
 Et j'aurai soin qu'on soupe de bonne heure, pour ne vous point faire malades.
-=FROSINE=
+==FROSINE==
 Ne me refusez pas la grâce dont je vous sollicite. Vous ne sauriez croire, Monsieur, le plaisir que...
-=HARPAGON=
+==HARPAGON==
 Je m'en vais. Voilà qu'on m'appelle. Jusqu'à tantôt.
-=FROSINE=
+==FROSINE==
 Que la fièvre te serre, chien de vilain à tous les diables. Le ladre a été ferme à toutes mes attaques : mais il ne me faut pas pourtant quitter la négociation ; et j'ai l'autre côté, en tout cas, d'où je suis assurée de tirer bonne récompense.
 `;
