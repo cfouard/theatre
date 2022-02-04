@@ -37,10 +37,8 @@ textSelect.onchange = () => {
   }
 
   [personnages, repliques] = extractRepliques(theTexte);
-  updatePersoSelection(personnages, persoSelection);
+  updatePersoSelection(personnages);
 
-  console.log('personnages: ', personnages);
-  console.log('répliques: ' + repliques);
   theTextElmt.innerHTML = theTexte;
 };
 
