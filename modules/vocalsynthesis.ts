@@ -1,20 +1,4 @@
-export function speak(text) {
-  var karl = new SpeechSynthesisUtterance();
-  karl.lang = 'fr-FR';
-  karl.text = text;
-  //  karl.onend = function () {
-  //   if (callback) {
-  //     callback();
-  //   }
-  // };
-  //  karl.onerror = function (e) {
-  //    if (callback) {
-  //      callback(e);
-  //    }
-  //  };
-
-  speechSynthesis.speak(karl);
-}
+import { Replique } from './repliques';
 
 export function getAllVoices() {
   return speechSynthesis.getVoices();
@@ -32,7 +16,7 @@ export function getVoiceList() {
   var voices = speechSynthesis.getVoices();
 
   for (var i = 0; i < voices.length; i++) {
-    if (voices[i].lang.includes('fr') || voices[i].lang.includes('en')) {
+    if (voices[i].lang.includes('fr')) {
       var option = document.createElement('option');
       //      let elmt = document.createElement('option') as HTMLOptionElement;
 
@@ -50,4 +34,36 @@ export function getVoiceList() {
     }
   }
   return select;
+}
+
+export function updateVoices(repliques: Replique[], map: Map<string, string>) {
+  map.forEach((key, value) => console.log('key: ', key, 'value: ', value));
+  for (let i in repliques) {
+    let replique = repliques[i];
+    let perso = replique.personnage;
+    replique.voix = map.get(perso);
+    console.log('map.get(', perso, '): ', map.get(perso));
+  }
+}
+
+function lireReplique(replique: Replique) {
+  var speaker = new SpeechSynthesisUtterance();
+  speaker.lang = 'fr-FR';
+  if (replique.voix != '' && replique.voix != 'moi') {
+    var theVoice = speechSynthesis.getVoices().filter(function (voice) {
+      return voice.name == replique.voix;
+    })[0];
+    speaker.voice = theVoice;
+  }
+  speaker.text = replique.texte;
+  speechSynthesis.speak(speaker);
+}
+
+export function répéter(repliques: Replique[]) {
+  for (let i in repliques) {
+    let replique = repliques[i];
+    if (replique.voix != 'moi') {
+      lireReplique(replique);
+    }
+  }
 }

@@ -1,7 +1,7 @@
 // Import stylesheets
 import { extractRepliques, Replique } from './modules/repliques';
 import { recognition, setResultsCB } from './modules/speech';
-import { getVoiceList, speak } from './modules/vocalsynthesis';
+import { getVoiceList, répéter, updateVoices } from './modules/vocalsynthesis';
 import './style.css';
 
 // Import des textes
@@ -11,15 +11,13 @@ console.clear();
 let theTexte = '';
 let personnages;
 let repliques;
+let personagesVoces: any[];
 
 const theTextElmt = document.querySelector('#theText') as HTMLDivElement;
 const persoSelection = document.querySelector(
   '#personnageSelection'
 ) as HTMLSelectElement;
 const persovoix = document.querySelector('#choixPersoVoix') as HTMLTableElement;
-
-let personages: string[];
-let personagesVoces: any[];
 
 // Ouverture du fichier de texte
 const textSelect = document.querySelector(
@@ -64,8 +62,10 @@ function speechCB(str: string) {
 }
 
 const lectureBt = document.querySelector('#read') as HTMLButtonElement;
+let pause = false;
 lectureBt.onclick = () => {
-  speak('Tu aimes le thé ?');
+  updateVoices(repliques, getMapPersoVoix());
+  répéter(repliques);
 };
 
 // //////
@@ -84,23 +84,32 @@ function updatePersoVoix(personnages: string[]) {
   }
 }
 
+function getMapPersoVoix() {
+  let map = new Map<string, string>();
+  var rows = persovoix.getElementsByTagName('tr');
+  if (rows.length > 1) {
+    for (let i = 1; i < rows.length; i++) {
+      let cells = rows[i].getElementsByTagName('td');
+      if (cells.length == 2) {
+        let perso = cells[0].innerHTML.trim();
+        let voiceSelectionCell = cells[1] as HTMLTableDataCellElement;
+        let voiceSelection = voiceSelectionCell.getElementsByTagName(
+          'select'
+        )[0] as HTMLSelectElement;
+        let voiceName =
+          voiceSelection[voiceSelection.selectedIndex].getAttribute(
+            'data-name'
+          );
+        console.log('perso: [', perso, ']');
+        console.log('voice: [', voiceName, ']');
+
+        map.set(perso, voiceName);
+      }
+    }
+  }
+  return map;
+}
+
 if (speechSynthesis.onvoiceschanged !== undefined) {
   speechSynthesis.onvoiceschanged = getVoiceList;
 }
-/*
-function updatePersoSelection(personnages: string[]) {
-  let invite = persoSelection.item(0).textContent;
-  console.log('invite: ', invite);
-
-  persoSelection.options.length = 0;
-
-  let elmt = document.createElement('option');
-  elmt.textContent = invite;
-  persoSelection.options.add(elmt);
-  for (let i in personnages) {
-    let elmt = document.createElement('option');
-    elmt.textContent = personnages[i];
-    persoSelection.options.add(elmt);
-  }
-}
-*/

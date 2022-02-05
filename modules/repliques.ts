@@ -10,12 +10,7 @@ export class Replique {
   }
 }
 
-export function extractRepliques(
-  texteInput: string,
-  //  personnages: Array<string>,
-  //  repliques: Array<Replique>,
-  separator = '=='
-) {
+export function extractRepliques(texteInput: string, separator = '==') {
   var currentText = texteInput;
   var firstSeparator = -1;
   var nextSeparator = -1;
@@ -33,7 +28,7 @@ export function extractRepliques(
     currentText = currentText.substring(firstSeparator + separator.length);
     nextSeparator = currentText.indexOf(separator);
 
-    personnage = currentText.substring(0, nextSeparator);
+    personnage = currentText.substring(0, nextSeparator).trim();
 
     currentText = currentText.substring(nextSeparator + separator.length);
 
