@@ -10,3 +10,14 @@ body {
 .errormsg {
   color: red;
 }
+
+.personnage {
+  color: darkgreen;
+  text-decoration-style: wavy;
+  text-align: center;
+  text-shadow: cadetblue;
+}
+
+.texte {
+  color: blue;
+}

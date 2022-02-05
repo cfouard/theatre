@@ -59,11 +59,20 @@ function lireReplique(replique: Replique) {
   speechSynthesis.speak(speaker);
 }
 
-export function répéter(repliques: Replique[]) {
+export function répéter(repliques: Replique[], theTextElmt: HTMLDivElement) {
   for (let i in repliques) {
     let replique = repliques[i];
     if (replique.voix != 'moi') {
+      afficheReplique(replique, theTextElmt);
       lireReplique(replique);
+      // Ici, attendre que speechSynthesis.speaking() deviennne false...
     }
   }
+}
+
+function afficheReplique(replique: Replique, theTextElmt: HTMLDivElement) {
+  let textStr =
+    "<div class='personnage'>" + replique.personnage + '</div><br/>';
+  textStr += "<p class='texte'>" + replique.texte + '</p>';
+  theTextElmt.innerHTML = textStr;
 }

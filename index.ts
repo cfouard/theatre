@@ -65,7 +65,7 @@ const lectureBt = document.querySelector('#read') as HTMLButtonElement;
 let pause = false;
 lectureBt.onclick = () => {
   updateVoices(repliques, getMapPersoVoix());
-  répéter(repliques);
+  répéter(repliques, theTextElmt);
 };
 
 // //////
