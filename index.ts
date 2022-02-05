@@ -71,7 +71,6 @@ lectureBt.onclick = () => {
 // //////
 
 function updatePersoVoix(personnages: string[]) {
-  var synth = window.speechSynthesis;
   for (let i in personnages) {
     let ligne = persovoix.tBodies[0].insertRow();
 
@@ -80,11 +79,14 @@ function updatePersoVoix(personnages: string[]) {
 
     casePerso.appendChild(document.createTextNode(personnages[i]));
 
-    let select = getVoiceList(synth);
+    let select = getVoiceList();
     caseVoix.appendChild(select);
   }
 }
 
+if (speechSynthesis.onvoiceschanged !== undefined) {
+  speechSynthesis.onvoiceschanged = getVoiceList;
+}
 /*
 function updatePersoSelection(personnages: string[]) {
   let invite = persoSelection.item(0).textContent;
