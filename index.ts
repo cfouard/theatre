@@ -1,12 +1,7 @@
 // Import stylesheets
 import { extractRepliques, Replique } from './modules/repliques';
 import { recognition, setResultsCB } from './modules/speech';
-import {
-  fillInVoiceList,
-  getAllVoices,
-  getVoiceList,
-  speak,
-} from './modules/vocalsynthesis';
+import { getVoiceList, speak } from './modules/vocalsynthesis';
 import './style.css';
 
 // Import des textes
@@ -89,6 +84,7 @@ function updatePersoVoix(personnages: string[]) {
   }
 }
 
+/*
 function updatePersoSelection(personnages: string[]) {
   let invite = persoSelection.item(0).textContent;
   console.log('invite: ', invite);
@@ -104,3 +100,4 @@ function updatePersoSelection(personnages: string[]) {
     persoSelection.options.add(elmt);
   }
 }
+*/
