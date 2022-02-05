@@ -71,6 +71,7 @@ lectureBt.onclick = () => {
 // //////
 
 function updatePersoVoix(personnages: string[]) {
+  var synth = window.speechSynthesis;
   for (let i in personnages) {
     let ligne = persovoix.tBodies[0].insertRow();
 
@@ -79,7 +80,7 @@ function updatePersoVoix(personnages: string[]) {
 
     casePerso.appendChild(document.createTextNode(personnages[i]));
 
-    let select = getVoiceList();
+    let select = getVoiceList(synth);
     caseVoix.appendChild(select);
   }
 }

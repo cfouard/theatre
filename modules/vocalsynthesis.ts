@@ -20,16 +20,16 @@ export function getAllVoices() {
   return speechSynthesis.getVoices();
 }
 
-export function getVoiceList() {
+export function getVoiceList(synth: SpeechSynthesis) {
   let select: HTMLSelectElement;
   select = document.createElement('select');
 
-  if (typeof speechSynthesis === 'undefined') {
+  if (typeof synth === 'undefined') {
     console.log('speechSynthesis undefined');
     return;
   }
 
-  var voices = speechSynthesis.getVoices();
+  var voices = synth.getVoices();
 
   for (var i = 0; i < voices.length; i++) {
     if (voices[i].lang.includes('fr') || voices[i].lang.includes('en')) {
