@@ -1,3 +1,7 @@
+// A voir:
+// forEach with promises: https://riptutorial.com/javascript/example/7609/foreach-with-promises
+// How to promisify the speechSunthesis API: https://www.reddit.com/r/learnjavascript/comments/88chsf/how_to_promisify_the_speechsynthesis_api/
+
 import { Replique } from './repliques';
 
 export function getAllVoices() {
@@ -12,6 +16,12 @@ export function getVoiceList() {
     console.log('speechSynthesis undefined');
     return;
   }
+
+  // La première voix à rentrer est "Moi !"
+  var option = document.createElement('option');
+  option.textContent = 'Moi !';
+  option.setAttribute('data-name', 'MOI');
+  select.appendChild(option);
 
   var voices = speechSynthesis.getVoices();
 
@@ -32,6 +42,7 @@ export function getVoiceList() {
       select.appendChild(option);
       //      voiceSelect.add(elmt, undefined);
     }
+    select.selectedIndex = 1;
   }
   return select;
 }
@@ -42,37 +53,22 @@ export function updateVoices(repliques: Replique[], map: Map<string, string>) {
     let replique = repliques[i];
     let perso = replique.personnage;
     replique.voix = map.get(perso);
-    console.log('map.get(', perso, '): ', map.get(perso));
+    //    console.log('map.get(', perso, '): ', map.get(perso));
   }
 }
 
-function lireReplique(replique: Replique) {
-  var speaker = new SpeechSynthesisUtterance();
-  speaker.lang = 'fr-FR';
-  if (replique.voix != '' && replique.voix != 'moi') {
-    var theVoice = speechSynthesis.getVoices().filter(function (voice) {
-      return voice.name == replique.voix;
-    })[0];
-    speaker.voice = theVoice;
-  }
-  speaker.text = replique.texte;
-  speechSynthesis.speak(speaker);
-}
-
-export function répéter(repliques: Replique[], theTextElmt: HTMLDivElement) {
-  for (let i in repliques) {
-    let replique = repliques[i];
-    if (replique.voix != 'moi') {
-      afficheReplique(replique, theTextElmt);
-      lireReplique(replique);
-      // Ici, attendre que speechSynthesis.speaking() deviennne false...
+export function lireReplique(replique: Replique) {
+  return new Promise((resolve) => {
+    var speaker = new SpeechSynthesisUtterance();
+    speaker.lang = 'fr-FR';
+    if (replique.voix != '' && replique.voix != 'moi') {
+      var theVoice = speechSynthesis.getVoices().filter(function (voice) {
+        return voice.name == replique.voix;
+      })[0];
+      speaker.voice = theVoice;
     }
-  }
-}
-
-function afficheReplique(replique: Replique, theTextElmt: HTMLDivElement) {
-  let textStr =
-    "<div class='personnage'>" + replique.personnage + '</div><br/>';
-  textStr += "<p class='texte'>" + replique.texte + '</p>';
-  theTextElmt.innerHTML = textStr;
+    speaker.text = replique.texte;
+    speaker.onend = resolve;
+    speechSynthesis.speak(speaker);
+  });
 }

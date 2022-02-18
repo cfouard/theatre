@@ -1,3 +1,6 @@
+import { direReplique } from './speech';
+import { lireReplique } from './vocalsynthesis';
+
 export class Replique {
   personnage: string;
   voix: string;
@@ -44,4 +47,43 @@ export function extractRepliques(texteInput: string, separator = '==') {
   personnages = Array.from(personnagesSet);
 
   return [personnages, repliques];
+}
+
+function afficheReplique(replique: Replique, theTextElmt: HTMLDivElement) {
+  let textStr =
+    "<div class='personnage'>" + replique.personnage + '</div><br/>';
+  textStr += "<p class='texte'>" + replique.texte + '</p>';
+  theTextElmt.innerHTML = textStr;
+}
+
+export function apprendreTexte(
+  repliques: Replique[],
+  theTextElmt: HTMLDivElement,
+  btn: HTMLButtonElement
+) {
+  var newPromise;
+  var i = 0;
+
+  var nextPromise = function () {
+    if (i >= repliques.length) {
+      // Processing finished
+      return;
+    }
+    let replique = repliques[i];
+
+    if (replique.voix != 'MOI') {
+      afficheReplique(replique, theTextElmt);
+      // Process next function. Wrap Promise.resolve in
+      // case the function does not return a promiqe
+      newPromise = Promise.resolve(lireReplique(replique));
+    } else {
+      newPromise = Promise.resolve(direReplique(replique, theTextElmt, btn));
+    }
+    i++;
+    // Chain to finish Processing
+    return newPromise.then(nextPromise);
+  };
+
+  // Kick of the Chain
+  return Promise.resolve().then(nextPromise);
 }

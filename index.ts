@@ -1,7 +1,15 @@
 // Import stylesheets
-import { extractRepliques, Replique } from './modules/repliques';
-import { recognition, setResultsCB } from './modules/speech';
-import { getVoiceList, répéter, updateVoices } from './modules/vocalsynthesis';
+import {
+  apprendreTexte,
+  extractRepliques,
+  Replique,
+} from './modules/repliques';
+import {
+  configureButtonSpeech,
+  recognition,
+  setResultsCB,
+} from './modules/speech';
+import { getVoiceList, updateVoices } from './modules/vocalsynthesis';
 import './style.css';
 
 // Import des textes
@@ -45,27 +53,13 @@ textSelect.onchange = () => {
 
 // Speech
 const bt = document.querySelector('#speech') as HTMLButtonElement;
-let reco = false;
-bt.onclick = () => {
-  if (reco) {
-    recognition.stop();
-    setResultsCB(speechCB);
-  } else {
-    recognition.start();
-  }
-  reco = !reco;
-  bt.textContent = reco ? 'Stopper' : 'Parler';
-};
-
-function speechCB(str: string) {
-  console.log(str);
-}
+configureButtonSpeech(bt);
 
 const lectureBt = document.querySelector('#read') as HTMLButtonElement;
 let pause = false;
 lectureBt.onclick = () => {
   updateVoices(repliques, getMapPersoVoix());
-  répéter(repliques, theTextElmt);
+  apprendreTexte(repliques, theTextElmt, bt);
 };
 
 // //////

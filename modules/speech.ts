@@ -1,6 +1,13 @@
+import { Replique } from './repliques';
+
 const SR: typeof window.SpeechRecognition =
   window.SpeechRecognition ?? (window as any).webkitSpeechRecognition;
 // const SpeechRecognition = window.SpeechRecognition ?? window.webkitSpeechRecognition;
+const enum SpeechStatus {
+  record,
+  stop,
+  restart,
+}
 
 /*
  * Instanciation et configuration d'un reconnaisseur vocal
@@ -18,6 +25,56 @@ let onFinalResult: undefined | CB_RESULT;
 export function setResultsCB(c: CB_RESULT): void {
   //  onPartialResult = p;
   onFinalResult = c;
+}
+
+let tricher = true;
+let status = SpeechStatus.restart;
+export function direReplique(
+  replique: Replique,
+  theTextElmt: HTMLDivElement,
+  btn: HTMLButtonElement
+) {
+  let textStr =
+    "<div class='personnage'>" + replique.personnage + '</div><br/>';
+  if (tricher) {
+    textStr += "<p class='texte'>" + replique.texte + '</p>';
+    theTextElmt.innerHTML = textStr;
+  }
+  btn.textContent = 'Parler';
+  status = SpeechStatus.record;
+
+  return new Promise((resolve) => {
+    // Ecrire des trucs ici...
+    console.log('resolving direReplique...');
+    // En fait, il faut que la promesse soit résolue quand on reclique sur le bouton...
+    recognition.onresult = resolve;
+  });
+}
+
+export function configureButtonSpeech(btn: HTMLButtonElement) {
+  btn.onclick = () => {
+    switch (status) {
+      case SpeechStatus.record:
+        recognition.start();
+        setResultsCB(finParole);
+        btn.textContent = 'Stop';
+        status = SpeechStatus.stop;
+        break;
+      case SpeechStatus.stop:
+        recognition.stop();
+        btn.textContent = 'Restart';
+        status = SpeechStatus.restart;
+        break;
+      case SpeechStatus.restart:
+        btn.textContent = 'Parler';
+        status = SpeechStatus.record;
+        break;
+    }
+  };
+}
+
+function finParole(str: string) {
+  console.log(str);
 }
 
 /*
@@ -39,4 +96,5 @@ recognition.onresult = (event) => {
     //    onPartialResult?.(transcript);
   }
 };
+
 recognition.onerror = console.error;
