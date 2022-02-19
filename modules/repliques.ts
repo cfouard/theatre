@@ -59,7 +59,8 @@ function afficheReplique(replique: Replique, theTextElmt: HTMLDivElement) {
 export function apprendreTexte(
   repliques: Replique[],
   theTextElmt: HTMLDivElement,
-  btn: HTMLButtonElement
+  btn: HTMLButtonElement,
+  cheatButton: HTMLInputElement
 ) {
   var newPromise;
   var i = 0;
@@ -77,7 +78,9 @@ export function apprendreTexte(
       // case the function does not return a promiqe
       newPromise = Promise.resolve(lireReplique(replique));
     } else {
-      newPromise = Promise.resolve(direReplique(replique, theTextElmt, btn));
+      newPromise = Promise.resolve(
+        direReplique(replique, theTextElmt, btn, cheatButton)
+      );
     }
     i++;
     // Chain to finish Processing

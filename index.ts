@@ -34,6 +34,8 @@ const textSelect = document.querySelector(
 
 const voiceSelect = document.querySelector('#voiceSelect') as HTMLSelectElement;
 
+const cheatButton = document.querySelector('#triche') as HTMLInputElement;
+
 textSelect.onchange = () => {
   let filename = '';
   switch (textSelect.selectedIndex) {
@@ -53,13 +55,13 @@ textSelect.onchange = () => {
 
 // Speech
 const bt = document.querySelector('#speech') as HTMLButtonElement;
-configureButtonSpeech(bt);
+//configureButtonSpeech(bt);
 
 const lectureBt = document.querySelector('#read') as HTMLButtonElement;
 let pause = false;
 lectureBt.onclick = () => {
   updateVoices(repliques, getMapPersoVoix());
-  apprendreTexte(repliques, theTextElmt, bt);
+  apprendreTexte(repliques, theTextElmt, bt, cheatButton);
 };
 
 // //////

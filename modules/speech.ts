@@ -32,14 +32,15 @@ let status = SpeechStatus.restart;
 export function direReplique(
   replique: Replique,
   theTextElmt: HTMLDivElement,
-  btn: HTMLButtonElement
+  btn: HTMLButtonElement,
+  cheatButton: HTMLInputElement
 ) {
   let textStr =
     "<div class='personnage'>" + replique.personnage + '</div><br/>';
-  if (tricher) {
+  if (cheatButton.checked) {
     textStr += "<p class='texte'>" + replique.texte + '</p>';
-    theTextElmt.innerHTML = textStr;
   }
+  theTextElmt.innerHTML = textStr;
   btn.textContent = 'Parler';
   status = SpeechStatus.record;
 
@@ -47,11 +48,14 @@ export function direReplique(
     // Ecrire des trucs ici...
     console.log('resolving direReplique...');
     // En fait, il faut que la promesse soit résolue quand on reclique sur le bouton...
-    recognition.onresult = resolve;
+    configureButtonSpeech(btn, resolve);
   });
 }
 
-export function configureButtonSpeech(btn: HTMLButtonElement) {
+export function configureButtonSpeech(
+  btn: HTMLButtonElement,
+  resolve: Function
+) {
   btn.onclick = () => {
     switch (status) {
       case SpeechStatus.record:
@@ -68,6 +72,7 @@ export function configureButtonSpeech(btn: HTMLButtonElement) {
       case SpeechStatus.restart:
         btn.textContent = 'Parler';
         status = SpeechStatus.record;
+        resolve();
         break;
     }
   };

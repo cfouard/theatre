@@ -21,3 +21,21 @@ body {
 .texte {
   color: blue;
 }
+
+.record {
+  height: 80px;
+  width: 80px;
+  background-image: url(https://raw.githubusercontent.com/cfouard/theatre/master/icons/rec.png);
+}
+
+.stop {
+  height: 80px;
+  width: 80px;
+  background-image: url(https://raw.githubusercontent.com/cfouard/theatre/master/icons/stop.png);
+}
+
+.restart {
+  height: 80px;
+  width: 80px;
+  background-image: url(https://raw.githubusercontent.com/cfouard/theatre/master/icons/play.png);
+}
