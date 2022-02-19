@@ -28,14 +28,31 @@ body {
   background-image: url(https://raw.githubusercontent.com/cfouard/theatre/master/icons/rec.png);
 }
 
+.parlez {
+  height: 120px;
+  width: 120px;
+  background-image: url(https://raw.githubusercontent.com/cfouard/theatre/master/icons/parler.png);
+}
+
 .stop {
   height: 80px;
   width: 80px;
   background-image: url(https://raw.githubusercontent.com/cfouard/theatre/master/icons/stop.png);
+}
+.regardez {
+  height: 120px;
+  width: 120px;
+  background-image: url(https://raw.githubusercontent.com/cfouard/theatre/master/icons/regarder.png);
 }
 
 .restart {
   height: 80px;
   width: 80px;
   background-image: url(https://raw.githubusercontent.com/cfouard/theatre/master/icons/play.png);
+}
+
+.ecoutez {
+  height: 205px;
+  width: 250px;
+  background-image: url(https://raw.githubusercontent.com/cfouard/theatre/master/icons/ecouter.png);
 }

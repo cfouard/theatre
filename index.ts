@@ -50,7 +50,7 @@ textSelect.onchange = () => {
   [personnages, repliques] = extractRepliques(theTexte);
   updatePersoVoix(personnages);
 
-  theTextElmt.innerHTML = theTexte;
+  //  theTextElmt.innerHTML = theTexte;
 };
 
 // Speech

@@ -1,4 +1,7 @@
 import { Replique } from './repliques';
+const explainBtn = document.querySelector(
+  '#speechExplication'
+) as HTMLButtonElement;
 
 const SR: typeof window.SpeechRecognition =
   window.SpeechRecognition ?? (window as any).webkitSpeechRecognition;
@@ -41,7 +44,9 @@ export function direReplique(
     textStr += "<p class='texte'>" + replique.texte + '</p>';
   }
   theTextElmt.innerHTML = textStr;
-  btn.textContent = 'Parler';
+  //  btn.setAttribute('disable', 'false');
+  btn.className = 'record';
+  //  btn.textContent = 'Parler';
   status = SpeechStatus.record;
 
   return new Promise((resolve) => {
@@ -61,16 +66,22 @@ export function configureButtonSpeech(
       case SpeechStatus.record:
         recognition.start();
         setResultsCB(finParole);
-        btn.textContent = 'Stop';
+        //        btn.textContent = 'Stop';
+        btn.className = 'stop';
+        explainBtn.className = 'parlez';
         status = SpeechStatus.stop;
         break;
       case SpeechStatus.stop:
         recognition.stop();
-        btn.textContent = 'Restart';
+        //        btn.textContent = 'Restart';
+        btn.className = 'restart';
+        explainBtn.className = 'regardez';
         status = SpeechStatus.restart;
         break;
       case SpeechStatus.restart:
-        btn.textContent = 'Parler';
+        btn.className = 'record';
+        explainBtn.className = 'ecoutez';
+        //        btn.textContent = 'Parler';
         status = SpeechStatus.record;
         resolve();
         break;
