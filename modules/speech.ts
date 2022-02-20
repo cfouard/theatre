@@ -33,7 +33,6 @@ export function setResultsCB(c: CB_RESULT): void {
   onFinalResult = c;
 }
 
-let aEteDit = '';
 let currentReplique: Replique;
 let tricher = true;
 let status = SpeechStatus.restart;
@@ -94,8 +93,6 @@ export function configureButtonSpeech(
 
 function finParole(str: string) {
   console.log(str);
-  aEteDit = str;
-  console.log('aEteDit: ', aEteDit);
   writeResultat();
 }
 
