@@ -1,7 +1,10 @@
 import { Replique } from './repliques';
+
 const explainBtn = document.querySelector(
   '#speechExplication'
 ) as HTMLButtonElement;
+
+const theTextElmt = document.querySelector('#theText') as HTMLDivElement;
 
 const SR: typeof window.SpeechRecognition =
   window.SpeechRecognition ?? (window as any).webkitSpeechRecognition;
@@ -30,14 +33,17 @@ export function setResultsCB(c: CB_RESULT): void {
   onFinalResult = c;
 }
 
+let aEteDit = '';
+let currentReplique: Replique;
 let tricher = true;
 let status = SpeechStatus.restart;
 export function direReplique(
   replique: Replique,
-  theTextElmt: HTMLDivElement,
   btn: HTMLButtonElement,
   cheatButton: HTMLInputElement
 ) {
+  var newPromise;
+  currentReplique = replique;
   let textStr =
     "<div class='personnage'>" + replique.personnage + '</div><br/>';
   if (cheatButton.checked) {
@@ -52,7 +58,7 @@ export function direReplique(
   return new Promise((resolve) => {
     // Ecrire des trucs ici...
     console.log('resolving direReplique...');
-    // En fait, il faut que la promesse soit résolue quand on reclique sur le bouton...
+    // En fait, il faut que la promesse soit résolueSpeechStatus.record, resolve);
     configureButtonSpeech(btn, resolve);
   });
 }
@@ -65,15 +71,15 @@ export function configureButtonSpeech(
     switch (status) {
       case SpeechStatus.record:
         recognition.start();
-        setResultsCB(finParole);
-        //        btn.textContent = 'Stop';
+        //        setResultsCB(finParole);
         btn.className = 'stop';
         explainBtn.className = 'parlez';
         status = SpeechStatus.stop;
         break;
       case SpeechStatus.stop:
         recognition.stop();
-        //        btn.textContent = 'Restart';
+        setResultsCB(finParole);
+        writeResultat();
         btn.className = 'restart';
         explainBtn.className = 'regardez';
         status = SpeechStatus.restart;
@@ -91,6 +97,22 @@ export function configureButtonSpeech(
 
 function finParole(str: string) {
   console.log(str);
+  aEteDit = str;
+
+  //  let textStr = theTextElmt.innerHTML;
+  //  textStr += '<p> ---------------------------------- </p>';
+  //  textStr += "<p class='reponse'>" + str + '</p>';
+  //  theTextElmt.innerHTML = textStr;
+}
+
+function writeResultat() {
+  let textStr =
+    "<div class='personnage'>" + currentReplique.personnage + '</div><br/>';
+  textStr += '<p> ------------Vous avez dit: ---------------------- </p>';
+  textStr += "<p class='reponse'>" + aEteDit + '</p>';
+  textStr += '<p> ------------La réplique est: ---------------------- </p>';
+  textStr += "<p class='textOrg'>" + currentReplique.texte + '</p>';
+  theTextElmt.innerHTML = textStr;
 }
 
 /*

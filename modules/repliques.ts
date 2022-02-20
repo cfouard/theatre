@@ -78,9 +78,7 @@ export function apprendreTexte(
       // case the function does not return a promiqe
       newPromise = Promise.resolve(lireReplique(replique));
     } else {
-      newPromise = Promise.resolve(
-        direReplique(replique, theTextElmt, btn, cheatButton)
-      );
+      newPromise = Promise.resolve(direReplique(replique, btn, cheatButton));
     }
     i++;
     // Chain to finish Processing

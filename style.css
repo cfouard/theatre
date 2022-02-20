@@ -22,6 +22,16 @@ body {
   color: blue;
 }
 
+.reponse {
+  font-family: 'Courier New', Courier, monospace;
+  font-style: italic;
+  color: orangered;
+}
+
+.textOrg {
+  color: darkblue;
+}
+
 .record {
   height: 80px;
   width: 80px;
