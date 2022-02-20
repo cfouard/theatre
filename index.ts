@@ -14,6 +14,7 @@ import './style.css';
 
 // Import des textes
 import { harpagonFrosine } from './textes/harpagonEtFrosine';
+import { extrait14juillet } from './textes/extraitPlateauLibre';
 
 console.clear();
 let theTexte = '';
@@ -40,14 +41,17 @@ textSelect.onchange = () => {
   let filename = '';
   switch (textSelect.selectedIndex) {
     case 1:
+      theTexte = extrait14juillet;
+      break;
+    case 2:
       theTexte = harpagonFrosine;
       break;
     default:
       theTexte = "Veuillez choisir l'un des textes proposés.";
       break;
   }
-
   [personnages, repliques] = extractRepliques(theTexte);
+  console.log('personnages: ', personnages);
   updatePersoVoix(personnages);
 
   //  theTextElmt.innerHTML = theTexte;

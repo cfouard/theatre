@@ -1,3 +1,4 @@
+export const extrait14juillet = `
 ==Mme Lacour==
 Mais c'est quoi ce boucan ?
 Eric ? Pouvez-vous s'il vous plaît éteindre cette musique ?
@@ -14,7 +15,7 @@ Ah oui j'avais oublié.
 Oh ! qui a éteint la musique ?
 ==Eric==
 C'est moi ! Réunion dans un quart d'heure dans le bureau de Mme Lacour.
-==Mme lacour==
+==Mme Lacour==
 Non ! Pas dans mon bureau.
 ==Cri-Cri==
 Dans un quart d'heure ? Je me fume une clope et j'arrive, et pourquoi
@@ -339,3 +340,4 @@ Norbert ? Mon mari Norbert ? Parce que mon mari était là ?
 Norbert ! Norbert !
 ==Cri-Cri==
 Elle est vachement énervée pour quelqu'un qui rentre de vacances.
+`;
