@@ -93,14 +93,14 @@ export function configureButtonSpeech(
 
 function finParole(str: string) {
   console.log(str);
-  writeResultat();
+  writeResultat(str);
 }
 
-function writeResultat() {
+function writeResultat(str: string) {
   let textStr =
     "<div class='personnage'>" + currentReplique.personnage + '</div><br/>';
   textStr += '<p> ------------Vous avez dit: ---------------------- </p>';
-  textStr += "<p class='reponse'>" + aEteDit + '</p>';
+  textStr += "<p class='reponse'>" + str + '</p>';
   textStr += '<p> ------------La réplique est: ---------------------- </p>';
   textStr += "<p class='textOrg'>" + currentReplique.texte + '</p>';
   theTextElmt.innerHTML = textStr;

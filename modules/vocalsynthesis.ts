@@ -25,29 +25,32 @@ export function getVoiceList() {
 
   var voices = speechSynthesis.getVoices();
 
-  if (voices.length == 0) {
+  for (var i = 0; i < voices.length; i++) {
+    //    if (voices[i].lang.includes('fr')) {
+    var option = document.createElement('option');
+    //      let elmt = document.createElement('option') as HTMLOptionElement;
+
+    option.textContent = voices[i].name + ' (' + voices[i].lang + ')';
+
+    if (voices[i].default) {
+      option.textContent += ' -- DEFAULT';
+    }
+
+    option.setAttribute('data-lang', voices[i].lang);
+    option.setAttribute('data-name', voices[i].name);
+    // add the option to the select box
+    select.appendChild(option);
+    //      voiceSelect.add(elmt, undefined);
+    //    }
+  }
+
+  if (select.children.length == 1) {
+    option = document.createElement('option');
     option.textContent = 'Personne...';
     option.setAttribute('data-name', 'personne');
+    select.appendChild(option);
   }
 
-  for (var i = 0; i < voices.length; i++) {
-    if (voices[i].lang.includes('fr')) {
-      var option = document.createElement('option');
-      //      let elmt = document.createElement('option') as HTMLOptionElement;
-
-      option.textContent = voices[i].name + ' (' + voices[i].lang + ')';
-
-      if (voices[i].default) {
-        option.textContent += ' -- DEFAULT';
-      }
-
-      option.setAttribute('data-lang', voices[i].lang);
-      option.setAttribute('data-name', voices[i].name);
-      // add the option to the select box
-      select.appendChild(option);
-      //      voiceSelect.add(elmt, undefined);
-    }
-  }
   select.selectedIndex = 1;
   return select;
 }
@@ -72,6 +75,7 @@ export function lireReplique(replique: Replique) {
       })[0];
       speaker.voice = theVoice;
     }
+    console.log('Dans lire replique');
     speaker.text = replique.texte;
     speaker.onend = resolve;
     speechSynthesis.speak(speaker);
