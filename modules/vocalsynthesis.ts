@@ -25,8 +25,13 @@ export function getVoiceList() {
 
   var voices = speechSynthesis.getVoices();
 
+  if (voices.length == 0) {
+    option.textContent = 'Personne...';
+    option.setAttribute('data-name', 'personne');
+  }
+
   for (var i = 0; i < voices.length; i++) {
-//    if (voices[i].lang.includes('fr')) {
+    if (voices[i].lang.includes('fr')) {
       var option = document.createElement('option');
       //      let elmt = document.createElement('option') as HTMLOptionElement;
 
@@ -41,9 +46,9 @@ export function getVoiceList() {
       // add the option to the select box
       select.appendChild(option);
       //      voiceSelect.add(elmt, undefined);
-//    }
-    select.selectedIndex = 1;
+    }
   }
+  select.selectedIndex = 1;
   return select;
 }
 
