@@ -194,7 +194,7 @@ Elle lui a fait sa piqûre parce qu'on ne trouvait pas le Docteur Lambert
 Et moi pas là... RTT
 ==Mme Lacour==
 Ça vous savez bien le prononcer.
-==Cri-cri==
+==Cri-Cri==
 Un jour j'irai à New York... Allez Nenette.
 Oh pardon !
 Bonjour !
@@ -282,11 +282,11 @@ Ah non ! Non on l'a fait ici... Dans le jardin
 ==Mme Lacour==
 Vous avez organisé un bal ?
 ==Nenette==
-Oui pour le 14 juillet, Cri-cri a voulu organiser un bal...
+Oui pour le 14 juillet, Cri-Cri a voulu organiser un bal...
 ==Mme Lacour==
 Oh là ! je n'en peux plus, je crois que j'ai eu ma dose pour la journée...
 J'ai mal à la tête.
-==Josianne==
+==Josiane==
 Vous avez réussi à tout cacher ?
 ==Cri-Cri==
 Oui ! On a rangé les alcools dans la cuisine
