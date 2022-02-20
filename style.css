@@ -32,6 +32,11 @@ body {
   color: darkblue;
 }
 
+.triche {
+  font-style: italic;
+  font-family: fantasy;
+}
+
 .record {
   height: 80px;
   width: 80px;

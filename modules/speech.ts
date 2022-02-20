@@ -47,25 +47,23 @@ export function direReplique(
   let textStr =
     "<div class='personnage'>" + replique.personnage + '</div><br/>';
   if (cheatButton.checked) {
-    textStr += "<p class='texte'>" + replique.texte + '</p>';
+    textStr += "<p class='triche'>" + replique.texte + '</p>';
   }
   theTextElmt.innerHTML = textStr;
-  //  btn.setAttribute('disable', 'false');
   btn.className = 'record';
-  //  btn.textContent = 'Parler';
   status = SpeechStatus.record;
+  setResultsCB(finParole);
 
   return new Promise((resolve) => {
-    // Ecrire des trucs ici...
     console.log('resolving direReplique...');
-    // En fait, il faut que la promesse soit résolueSpeechStatus.record, resolve);
-    configureButtonSpeech(btn, resolve);
+    configureButtonSpeech(btn, resolve, replique);
   });
 }
 
 export function configureButtonSpeech(
   btn: HTMLButtonElement,
-  resolve: Function
+  resolve: Function,
+  replique: Replique
 ) {
   btn.onclick = () => {
     switch (status) {
@@ -78,8 +76,7 @@ export function configureButtonSpeech(
         break;
       case SpeechStatus.stop:
         recognition.stop();
-        setResultsCB(finParole);
-        writeResultat();
+        //        writeResultat(replique);
         btn.className = 'restart';
         explainBtn.className = 'regardez';
         status = SpeechStatus.restart;
@@ -98,11 +95,8 @@ export function configureButtonSpeech(
 function finParole(str: string) {
   console.log(str);
   aEteDit = str;
-
-  //  let textStr = theTextElmt.innerHTML;
-  //  textStr += '<p> ---------------------------------- </p>';
-  //  textStr += "<p class='reponse'>" + str + '</p>';
-  //  theTextElmt.innerHTML = textStr;
+  console.log('aEteDit: ', aEteDit);
+  writeResultat();
 }
 
 function writeResultat() {

@@ -51,7 +51,7 @@ textSelect.onchange = () => {
       break;
   }
   [personnages, repliques] = extractRepliques(theTexte);
-  console.log('personnages: ', personnages);
+  //  console.log('personnages: ', personnages);
   updatePersoVoix(personnages);
 
   //  theTextElmt.innerHTML = theTexte;
@@ -100,8 +100,8 @@ function getMapPersoVoix() {
           voiceSelection[voiceSelection.selectedIndex].getAttribute(
             'data-name'
           );
-        console.log('perso: [', perso, ']');
-        console.log('voice: [', voiceName, ']');
+        //        console.log('perso: [', perso, ']');
+        //        console.log('voice: [', voiceName, ']');
 
         map.set(perso, voiceName);
       }
