@@ -29,9 +29,9 @@ body {
 }
 
 .parlez {
-  height: 120px;
-  width: 120px;
-  background-image: url(https://raw.githubusercontent.com/cfouard/theatre/master/icons/parler.png);
+  height: 100px;
+  width: 100px;
+  background-image: url(https://raw.githubusercontent.com/cfouard/theatre/master/icons/parler-100x100.png);
 }
 
 .stop {
@@ -40,9 +40,9 @@ body {
   background-image: url(https://raw.githubusercontent.com/cfouard/theatre/master/icons/stop.png);
 }
 .regardez {
-  height: 120px;
-  width: 120px;
-  background-image: url(https://raw.githubusercontent.com/cfouard/theatre/master/icons/regarder.png);
+  height: 100px;
+  width: 100px;
+  background-image: url(https://raw.githubusercontent.com/cfouard/theatre/master/icons/regarder-100x100.png);
 }
 
 .restart {
@@ -52,7 +52,7 @@ body {
 }
 
 .ecoutez {
-  height: 205px;
-  width: 250px;
-  background-image: url(https://raw.githubusercontent.com/cfouard/theatre/master/icons/ecouter.png);
+  height: 100px;
+  width: 100px;
+  background-image: url(https://raw.githubusercontent.com/cfouard/theatre/master/icons/ecouter-100x100.png);
 }
